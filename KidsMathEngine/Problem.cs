@@ -1,0 +1,68 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace KidsMathEngine
+{
+    public class Problem
+    {
+
+        public List<int> Values { get; set; }
+        public string Method { get; set; }
+
+        public int Solution { get; private set; }
+
+        public Problem()
+        {
+        }
+
+        public void Create()
+        {
+            if (Values.Count >= 2)
+            {
+                if (Method == "+")
+                {
+                    var solution = 0;
+
+                    foreach(int value in Values)
+                    {
+                        solution = solution + value;
+                    }
+
+                    Solution = solution;
+                }
+                else
+                {
+                    throw new Exception("Problem Method is not valid");
+                }
+            }
+            else
+            {
+                throw new Exception("Cannot create a problem without two or more values");
+            }
+                
+        }
+
+        public void CreateAdditionProblem(int totalValues, int smallest, int largest)
+        {
+            var values = new List<int>();
+
+            for (int i = 0; i < totalValues; i++)
+            {
+                var randomInt = generateRandomInt(smallest, largest);
+                values.Add(randomInt);
+            }
+
+            Method = "+";
+            Create();
+        }
+
+        private int generateRandomInt(int min, int max)
+        {
+            var random = new Random();
+            return random.Next(min, max);
+        }
+
+
+    }
+}
