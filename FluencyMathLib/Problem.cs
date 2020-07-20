@@ -11,6 +11,7 @@ namespace FluencyMathLib
 
         public int Solution { get; private set; }
         public bool Result { get; private set; }
+        public int Points { get; private set; }
 
         public Problem()
         {
@@ -31,6 +32,7 @@ namespace FluencyMathLib
                     }
 
                     Solution = solution;
+                    Points = (Solution.ToString()).Length;
                 }
                 else if (Method == "-")
                 {
@@ -43,6 +45,7 @@ namespace FluencyMathLib
                     }
 
                     Solution = solution;
+                    Points = (Solution.ToString()).Length;
                 }
                 else
                 {
