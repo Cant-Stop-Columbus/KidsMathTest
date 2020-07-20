@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace KidsMathEngine
+namespace FluencyMathLib
 {
     public class Problem
     {
@@ -11,9 +10,11 @@ namespace KidsMathEngine
         public string Method { get; set; }
 
         public int Solution { get; private set; }
+        public bool Result { get; private set; }
 
         public Problem()
         {
+            Result = false;
         }
 
         public void Create()
@@ -24,9 +25,21 @@ namespace KidsMathEngine
                 {
                     var solution = 0;
 
-                    foreach(int value in Values)
+                    foreach (int value in Values)
                     {
                         solution = solution + value;
+                    }
+
+                    Solution = solution;
+                }
+                else if (Method == "-")
+                {
+
+                    var solution = Values[0];
+
+                    for (int i = 1; i < Values.Count; i++)
+                    {
+                        solution = solution - Values[i];
                     }
 
                     Solution = solution;
@@ -40,7 +53,7 @@ namespace KidsMathEngine
             {
                 throw new Exception("Cannot create a problem without two or more values");
             }
-                
+
         }
 
         public void CreateAdditionProblem(int totalValues, int smallest, int largest)
@@ -63,6 +76,19 @@ namespace KidsMathEngine
             return random.Next(min, max);
         }
 
-
+        public void Answer(int inputAnswer)
+        {
+            if (Solution > 0)
+            {
+                if (Solution == inputAnswer)
+                {
+                    Result = true;
+                }
+            }
+            else
+            {
+                throw new Exception("A solution has not been created");
+            }
+        }
     }
 }
