@@ -58,12 +58,12 @@ namespace FluencyMathLib
 
         public void CreateAdditionProblem(int totalValues, int smallest, int largest)
         {
-            var values = new List<int>();
+            Values = new List<int>();
 
             for (int i = 0; i < totalValues; i++)
             {
                 var randomInt = generateRandomInt(smallest, largest);
-                values.Add(randomInt);
+                Values.Add(randomInt);
             }
 
             Method = "+";

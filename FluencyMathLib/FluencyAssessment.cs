@@ -11,30 +11,25 @@ namespace FluencyMathLib
         public int Score { get; private set; }
         public static Timer timer;
 
-        public FluencyAssesment()
-        {
-            Score = 0;
-           // timer = new System.Timers.Timer(1000);
-           // timer.Enabled = true;
-
-        }
         public void CreateFluencyAssessment()
         {
-            
+            Questions = new List<Problem>();
+            Score = 0;
+
             for ( int i = 0; i < 20; i++)
             {
-                 Problem P = new Problem();
-                P.CreateAdditionProblem(2, 0, 10);
-                Questions.Add(P);
-
+                Problem problem = new Problem();
+                problem.CreateAdditionProblem(2, 0, 10);
+                Questions.Add(problem);
             }
         }
-       
-      
 
-
-        
+        public void DisplayProblem()
+        {
+            
         }
+
+    }
     
 }
 

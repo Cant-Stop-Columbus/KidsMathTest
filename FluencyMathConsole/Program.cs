@@ -7,10 +7,12 @@ namespace FluencyMathConsole
     {
         static void Main(string[] args)
         {
-            var fa = new FluencyAssesment();
+            var fluencyAssessment = new FluencyAssesment();
 
+            fluencyAssessment.CreateFluencyAssessment();
 
-            Console.WriteLine("Hello World!");
+            var message = string.Format("Your test will have {0} questions", fluencyAssessment.Questions.Count);
+            Console.WriteLine(message);
         }
     }
 }
