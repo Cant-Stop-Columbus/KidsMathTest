@@ -26,6 +26,37 @@ namespace FluencyMathLib
 
         public void DisplayProblem()
         {
+            foreach(var question in Questions)
+            {
+                var askQuestion = string.Format("{0} {1} {2}",question.Values[0], question.Method, question.Values[1]);
+                Console.WriteLine(askQuestion);
+
+                var answer = Console.ReadLine();
+
+                try
+                {
+                    int numericAnswer = int.Parse(answer);
+                    question.Answer(numericAnswer);
+
+                    if (question.Result)
+                    {
+                        Console.WriteLine("Good Job!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Maybe next time...");
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid answer");
+                }
+              
+
+                
+
+
+            }
             
         }
 

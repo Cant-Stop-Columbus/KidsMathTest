@@ -78,12 +78,13 @@ namespace FluencyMathLib
 
         public void Answer(int inputAnswer)
         {
-            if (Solution > 0)
+            if (Solution >= 0)
             {
                 if (Solution == inputAnswer)
                 {
                     Result = true;
                 }
+               
             }
             else
             {

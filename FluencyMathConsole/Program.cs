@@ -13,6 +13,8 @@ namespace FluencyMathConsole
 
             var message = string.Format("Your test will have {0} questions", fluencyAssessment.Questions.Count);
             Console.WriteLine(message);
+
+            fluencyAssessment.DisplayProblem();
         }
     }
 }
