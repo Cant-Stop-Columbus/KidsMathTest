@@ -1,4 +1,5 @@
 ﻿using System;
+using FluencyMathLib;
 
 namespace FluencyMathConsole
 {
@@ -6,6 +7,9 @@ namespace FluencyMathConsole
     {
         static void Main(string[] args)
         {
+            var fa = new FluencyAssesment();
+
+
             Console.WriteLine("Hello World!");
         }
     }
