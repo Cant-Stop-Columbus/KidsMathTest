@@ -19,7 +19,7 @@ namespace FluencyMathLib
             for ( int i = 0; i < 20; i++)
             {
                 Problem problem = new Problem();
-                problem.CreateAdditionProblem(2, 0, 10);
+                problem.CreateDivisionProblem(2, 10, 50, 1,10);
                 Questions.Add(problem);
             }
         }
