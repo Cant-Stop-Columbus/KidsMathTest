@@ -2,6 +2,7 @@ using FluencyMathLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
+
 namespace KidsMathEngineTests
 {
     [TestClass]
@@ -147,6 +148,28 @@ namespace KidsMathEngineTests
             Assert.IsNotNull(problem.Solution);
 
         }
+        /*
+        
+        
+        [TestMethod]
+        public void CanCreate2_1_ProblemWithTwoPositiveValues()
+        {
+            var problem = new Problem();
+            problem.Create2_1_Problem();
 
+            Assert.AreEqual(problem.Values.Count, 2);
+            // sum(values) = answer
+            Assert.AreEqual(problem.Values[0] + problem.Values[1], problem.Solution);
+            // each value not > 10
+            Assert.AreEqual(problem.Values[0] <= 10, true);
+            Assert.AreEqual(problem.Values[1] <= 10, true);
+            // each value not < 0
+            Assert.AreEqual(problem.Values[0] >= 0, true);
+            Assert.AreEqual(problem.Values[1] >= 0, true);
+            // answer not > 20
+            Assert.AreEqual(problem.Solution <= 20, true);
+
+        }
+        */
     }
 }
