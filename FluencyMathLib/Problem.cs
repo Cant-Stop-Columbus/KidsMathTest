@@ -132,7 +132,7 @@ namespace FluencyMathLib
             Create();
         }
 
-        public void CreateDivisionProblem(int totalValues, int smallestDivisor, int largestDivisor, int smallestFactor, int largestFactor, bool remainders = false)
+        public void CreateDivisionProblem(int totalValues, int smallestDivisor, int largestDivisor, int smallestQuotient, int largestQuotient, bool remainders = false)
         {
             // Going to go out on a limb and say division problems with 3 values won't be an issue we have to face.
 
@@ -149,7 +149,7 @@ namespace FluencyMathLib
 
                 var factors = new List<int>();
 
-                for (int f = smallestFactor; f <= largestFactor; f++)
+                for (int f = smallestQuotient; f <= largestQuotient; f++)
                 {
                     factors.Add(f);
                 }
@@ -163,6 +163,22 @@ namespace FluencyMathLib
             }
             else
             {
+
+                Values[1] = generateRandomInt(smallestDivisor, largestDivisor);
+
+                Values[0] = Values[1] * generateRandomInt(smallestQuotient, largestQuotient);
+
+                /* Create Multiplication problem (1-9 x 1-9)
+
+                values[0] = answer of multiplication prblen
+                values[1] = values [0] of m problem
+                answer = values[1] of m problem
+
+
+
+
+
+                
                 int divisor = generateRandomInt(smallestDivisor, largestDivisor);
 
                 var factors = new List<int>();
@@ -181,6 +197,7 @@ namespace FluencyMathLib
 
                 Values.Add(factor);
                 Values.Add(divisor);
+                */
 
             }
 
@@ -188,17 +205,17 @@ namespace FluencyMathLib
             Create();
         }
 
-        public void Create2_1_Problem()
+        public void CreateTest01Problem()
         {
             CreateAdditionProblem(2, 0, 11);
         }
 
-        public void Create2_5_Problem()
+        public void CreateTest02Problem()
         {
             CreateSubtractionProblem(2, 0, 21);
         }
 
-        public void Create2_8_Problem()
+        public void CreateTest03Problem()
         {
             CreateAdditionProblem(2, 0, 100);
             while (doesAdditionProblemCarry(Values))
@@ -207,18 +224,71 @@ namespace FluencyMathLib
             }
         }
 
-        public void Create2_9_Problem()
+        public void CreateTest04Problem()
         {
             CreateAdditionProblem(2, 0, 100);
         }
 
-        public void Create2_10_Problem()
+        public void CreateTest05Problem()
         {
             CreateSubtractionProblem(2, 0, 100);
             while (doesSubtractionProblemBorrow(Values))
             {
                 CreateSubtractionProblem(2, 0, 100);
             }
+        }
+
+        public void Create06Problem()
+        {
+            CreateSubtractionProblem(2, 0, 100);
+        }
+
+        public void Create07Problem()
+        {
+            CreateAdditionProblem(2, 0, 1000);
+            while (doesAdditionProblemCarry(Values))
+            {
+                CreateAdditionProblem(2, 0, 1000);
+            }
+        }
+
+        public void Create08Problem()
+        {
+            CreateAdditionProblem(2, 0, 1000);
+        }
+
+        public void Create09Problem()
+        {
+            CreateSubtractionProblem(2, 0, 1000);
+            while (doesSubtractionProblemBorrow(Values))
+            {
+                CreateSubtractionProblem(2, 0, 1000);
+            }
+        }
+
+        public void Create10Problem()
+        {
+            CreateSubtractionProblem(2, 0, 1000);
+        }
+
+        public void Create11Problem()
+        {
+            CreateMultiplicationProblem(2, 0, 10);
+        }
+
+        public void Create12Problem()
+        {
+            CreateDivisionProblem(2, 1, 82, 1, 10);
+        }
+
+        public void Create13Problem()
+        {
+            CreateMultiplicationProblem(2, 0, 12);
+        }
+
+        public void Create14Problem()
+        {
+            CreateDivisionProblem(2, 1, 145, 1, 13);
         }
 
         private int generateRandomInt(int min, int max)

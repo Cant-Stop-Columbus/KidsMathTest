@@ -130,7 +130,8 @@ namespace KidsMathEngineTests
             inputValues.Add(10);
             var problem = new Problem
             {
-                Method = inputMethod
+                Method = inputMethod,
+                Values = inputValues,
             };
 
             problem.Create();
@@ -148,7 +149,50 @@ namespace KidsMathEngineTests
             Assert.IsNotNull(problem.Solution);
 
         }
+
+        [TestMethod]
+        public void CanCreateDivisionProblem()
+        {
+            var inputValues = new List<int>();
+            var inputMethod = "/";
+            var inputAnswer = 3;
+
+            inputValues.Add(9);
+            inputValues.Add(3);
+
+            var problem = new Problem
+            {
+                Values = inputValues,
+                Method = inputMethod,
+            };
+
+            problem.Create();
+            problem.Answer(inputAnswer);
+
+            Assert.AreEqual(problem.Values, inputValues);
+            Assert.AreEqual(problem.Method, inputMethod);
+            Assert.AreEqual(problem.Solution, 3);
+
+
+        }
+
+        [TestMethod]
+        public void CanCreateCorrectDivisionProblem()
+        {
+
+        }
+
+
         /*
+        [TestMethod]
+        public void CanCreateDivisionProblemWithoutRemainders()
+        {
+            var problem = new Problem;
+            problem.CreateDivisionProblem(2, 1, 10, 1, 10);
+
+            Assert.IsNotNull(problem.Values);
+        }
+        
         
         
         [TestMethod]
