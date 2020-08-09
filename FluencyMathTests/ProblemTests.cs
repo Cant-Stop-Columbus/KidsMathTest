@@ -124,7 +124,7 @@ namespace KidsMathEngineTests
             //var inputValues = new int[] { 10, 20 };
             var inputMethod = "+";
             var inputValues = new List<int>();
-            var inputAnswer = 30;
+            //var inputAnswer = 30;
 
             inputValues.Add(25);
             inputValues.Add(10);
