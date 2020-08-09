@@ -155,7 +155,7 @@ namespace KidsMathEngineTests
         {
             var inputValues = new List<int>();
             var inputMethod = "/";
-            var inputAnswer = 3;
+            //var inputAnswer = 3;
 
             inputValues.Add(9);
             inputValues.Add(3);
