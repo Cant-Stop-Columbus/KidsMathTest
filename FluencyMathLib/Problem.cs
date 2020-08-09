@@ -132,7 +132,7 @@ namespace FluencyMathLib
             Create();
         }
 
-        public void CreateDivisionProblem(int totalValues, int smallestDivisor, int largestDivisor, int smallestQuotient, int largestQuotient, bool remainders = false)
+        public void CreateDivisionProblem(int smallest, int largest, bool remainders = false)
         {
             // Going to go out on a limb and say division problems with 3 values won't be an issue we have to face.
 
@@ -145,59 +145,19 @@ namespace FluencyMathLib
 
             if (remainders)
             {
-                int divisor = generateRandomInt(smallestDivisor, largestDivisor);
+                int divisor = generateRandomInt(smallest, largest);
+                int dividend =( divisor * generateRandomInt(smallest, largest)) + generateRandomInt(0, divisor);
 
-                var factors = new List<int>();
-
-                for (int f = smallestQuotient; f <= largestQuotient; f++)
-                {
-                    factors.Add(f);
-                }
-
-                var random = new Random();
-                int r = random.Next(factors.Count);
-                int factor = factors[r];
-
-                Values.Add(factor);
+                Values.Add(dividend);
                 Values.Add(divisor);
             }
             else
             {
+                int divisor = generateRandomInt(smallest, largest);
+                int dividend = divisor * generateRandomInt(smallest, largest);
 
-                Values[1] = generateRandomInt(smallestDivisor, largestDivisor);
-
-                Values[0] = Values[1] * generateRandomInt(smallestQuotient, largestQuotient);
-
-                /* Create Multiplication problem (1-9 x 1-9)
-
-                values[0] = answer of multiplication prblen
-                values[1] = values [0] of m problem
-                answer = values[1] of m problem
-
-
-
-
-
-                
-                int divisor = generateRandomInt(smallestDivisor, largestDivisor);
-
-                var factors = new List<int>();
-
-                for (int f = smallestFactor; f <= largestFactor; f++)
-                {
-                    if (f % divisor == 0)
-                    {
-                        factors.Add(f);
-                    }
-                }
-
-                var random = new Random();
-                int r = random.Next(factors.Count);
-                int factor = factors[r];
-
-                Values.Add(factor);
+                Values.Add(dividend);
                 Values.Add(divisor);
-                */
 
             }
 
@@ -278,7 +238,7 @@ namespace FluencyMathLib
 
         public void Create12Problem()
         {
-            CreateDivisionProblem(2, 1, 82, 1, 10);
+            CreateDivisionProblem(1, 10);
         }
 
         public void Create13Problem()
@@ -288,7 +248,7 @@ namespace FluencyMathLib
 
         public void Create14Problem()
         {
-            CreateDivisionProblem(2, 1, 145, 1, 13);
+            CreateDivisionProblem(1, 13);
         }
 
         private int generateRandomInt(int min, int max)

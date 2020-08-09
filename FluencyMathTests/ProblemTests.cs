@@ -155,7 +155,7 @@ namespace KidsMathEngineTests
         {
             var inputValues = new List<int>();
             var inputMethod = "/";
-            //var inputAnswer = 3;
+            var inputAnswer = 3;
 
             inputValues.Add(9);
             inputValues.Add(3);
@@ -177,12 +177,81 @@ namespace KidsMathEngineTests
         }
 
         [TestMethod]
-        public void CanCreateCorrectDivisionProblem()
+        public void CanCreateDivisionProblemWithCorrectAnswer()
         {
+            var inputValues = new List<int>();
+            var inputMethod = "/";
+            var inputAnswer = 9;
+
+            inputValues.Add(81);
+            inputValues.Add(9);
+
+            var problem = new Problem
+            {
+                Values = inputValues,
+                Method = inputMethod,
+            };
+
+            problem.Create();
+            problem.Answer(inputAnswer);
+
+            Assert.AreEqual(problem.Values, inputValues);
+            Assert.AreEqual(problem.Method, inputMethod);
+            Assert.AreEqual(problem.Solution, 9);
+        }
+
+        [TestMethod]
+        public void CanCreateDivisionProblemWithFalseAnswer()
+         {
+                //KidsMathEngine.Test test = new KidsMathEngine.Test();
+                var inputValues = new List<int>();
+                var inputMethod = "/";
+                var inputAnswer = 8;
+
+                inputValues.Add(81);
+                inputValues.Add(9);
+
+                var problem = new Problem
+                {
+                    Values = inputValues,
+                    Method = inputMethod,
+                };
+
+                problem.Create();
+                problem.Answer(inputAnswer);
+
+                Assert.AreEqual(problem.Method, inputMethod);
+                Assert.AreNotEqual(problem.Solution, 8);
+                Assert.AreEqual(problem.Result, false);
+
+          }
+
+        [TestMethod]
+        public void CanDetermineIfDivisionProblemHasARemainder()
+        {
+            var inputValues = new List<int>();
+            var inputMethod = "/";
+            var inputAnswer = 10;
+         
+
+            inputValues.Add(81);
+            inputValues.Add(8);
+
+            var problem = new Problem
+            {
+                Values = inputValues,
+                Method = inputMethod,
+            };
+            problem.Create();
+            problem.Answer(inputAnswer);
+
+            Assert.AreEqual(problem.Method, inputMethod);
+            Assert.AreEqual(problem.Remainder, 1);
+            Assert.AreEqual(problem.Solution, 10);
 
         }
 
-
+        
         /*
         [TestMethod]
         public void CanCreateDivisionProblemWithoutRemainders()
