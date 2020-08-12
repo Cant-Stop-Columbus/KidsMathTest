@@ -76,7 +76,7 @@ namespace FluencyMathLib
             }
 
         }
-
+        
         public void CreateAdditionProblem(int totalValues, int smallest, int largest)
         {
             Values = new List<int>();
@@ -103,7 +103,7 @@ namespace FluencyMathLib
                 Values.Add(randomInt);
             }
 
-            if (Values.Count == 2 & Values[1] > Values[0])
+            if (Values.Count == 2 && Values[1] > Values[0])
             {
                 // This is a jenky way to solve the problem of a random subtraction problem with a
                 // first number that's less than the second (thus producing a negative number). A more
@@ -132,7 +132,7 @@ namespace FluencyMathLib
             Create();
         }
 
-        public void CreateDivisionProblem(int totalValues, int smallestFactor, int largestFactor, int smallestDivisor, int largestDivisor, bool remainders = false)
+        public void CreateDivisionProblem(int smallest, int largest, bool remainders = false)
         {
             // Going to go out on a limb and say division problems with 3 values won't be an issue we have to face.
 
@@ -145,41 +145,18 @@ namespace FluencyMathLib
 
             if (remainders)
             {
-                int divisor = generateRandomInt(smallestDivisor, largestDivisor);
+                int divisor = generateRandomInt(smallest, largest);
+                int dividend =( divisor * generateRandomInt(smallest, largest)) + generateRandomInt(0, divisor);
 
-                var factors = new List<int>();
-
-                for (int f = smallestFactor; f <= largestFactor; f++)
-                {
-                    factors.Add(f);
-                }
-
-                var random = new Random();
-                int r = random.Next(factors.Count);
-                int factor = factors[r];
-
-                Values.Add(factor);
+                Values.Add(dividend);
                 Values.Add(divisor);
             }
             else
             {
-                int divisor = generateRandomInt(smallestDivisor, largestDivisor);
+                int divisor = generateRandomInt(smallest, largest);
+                int dividend = divisor * generateRandomInt(smallest, largest);
 
-                var factors = new List<int>();
-
-                for (int f = smallestFactor; f <= largestFactor; f++)
-                {
-                    if (f % divisor == 0)
-                    {
-                        factors.Add(f);
-                    }
-                }
-
-                var random = new Random();
-                int r = random.Next(factors.Count);
-                int factor = factors[r];
-
-                Values.Add(factor);
+                Values.Add(dividend);
                 Values.Add(divisor);
 
             }
@@ -188,10 +165,142 @@ namespace FluencyMathLib
             Create();
         }
 
+        public void CreateTest01Problem()
+        {
+            CreateAdditionProblem(2, 0, 11);
+        }
+
+        public void CreateTest02Problem()
+        {
+            CreateSubtractionProblem(2, 0, 21);
+        }
+
+        public void CreateTest03Problem()
+        {
+            CreateAdditionProblem(2, 0, 100);
+            while (doesAdditionProblemCarry(Values))
+            {
+                CreateAdditionProblem(2, 0, 100);
+            }
+        }
+
+        public void CreateTest04Problem()
+        {
+            CreateAdditionProblem(2, 0, 100);
+        }
+
+        public void CreateTest05Problem()
+        {
+            CreateSubtractionProblem(2, 0, 100);
+            while (doesSubtractionProblemBorrow(Values))
+            {
+                CreateSubtractionProblem(2, 0, 100);
+            }
+        }
+
+        public void Create06Problem()
+        {
+            CreateSubtractionProblem(2, 0, 100);
+        }
+
+        public void Create07Problem()
+        {
+            CreateAdditionProblem(2, 0, 1000);
+            while (doesAdditionProblemCarry(Values))
+            {
+                CreateAdditionProblem(2, 0, 1000);
+            }
+        }
+
+        public void Create08Problem()
+        {
+            CreateAdditionProblem(2, 0, 1000);
+        }
+
+        public void Create09Problem()
+        {
+            CreateSubtractionProblem(2, 0, 1000);
+            while (doesSubtractionProblemBorrow(Values))
+            {
+                CreateSubtractionProblem(2, 0, 1000);
+            }
+        }
+
+        public void Create10Problem()
+        {
+            CreateSubtractionProblem(2, 0, 1000);
+        }
+
+        public void Create11Problem()
+        {
+            CreateMultiplicationProblem(2, 0, 10);
+        }
+
+        public void Create12Problem()
+        {
+            CreateDivisionProblem(1, 10);
+        }
+
+        public void Create13Problem()
+        {
+            CreateMultiplicationProblem(2, 0, 12);
+        }
+
+        public void Create14Problem()
+        {
+            CreateDivisionProblem(1, 13);
+        }
+
         private int generateRandomInt(int min, int max)
         {
             var random = new Random();
             return random.Next(min, max);
+        }
+
+        private List<int> generateDigits(int num)
+        {
+            // Creates (reverse-ordered) list of integers where each integer is digit in input num
+
+            var digits = new List<int>();
+            while(num != 0)
+            {
+                int nextDigit = num % 10;
+                num /= 10;
+                digits.Add(nextDigit);
+            }
+            return digits;
+        }
+
+        private bool doesAdditionProblemCarry(List<int> numsAdded)
+        {
+            // digits1 is first number in addition problem
+
+            var digitsOfNum1 = generateDigits(numsAdded[0]);
+            var digitsOfNum2 = generateDigits(numsAdded[1]);
+
+            for(int i = 0; i < Math.Min(digitsOfNum1.Count, digitsOfNum2.Count); i++)
+            {
+                if (digitsOfNum1[i] + digitsOfNum2[i] > 9)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool doesSubtractionProblemBorrow(List<int> numsSubtracted)
+        {
+            var digitsOfNum1 = generateDigits(numsSubtracted[0]);
+            var digitsOfNum2 = generateDigits(numsSubtracted[1]);
+
+            for(int i = 0; i < Math.Min(digitsOfNum1.Count, digitsOfNum2.Count); i++)
+            {
+                if (digitsOfNum1[i] < digitsOfNum2[i])
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void Answer(int inputAnswer)
