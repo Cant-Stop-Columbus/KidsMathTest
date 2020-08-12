@@ -11,30 +11,56 @@ namespace FluencyMathLib
         public int Score { get; private set; }
         public static Timer timer;
 
-        public FluencyAssesment()
-        {
-            Score = 0;
-           // timer = new System.Timers.Timer(1000);
-           // timer.Enabled = true;
-
-        }
         public void CreateFluencyAssessment()
         {
-            
+            Questions = new List<Problem>();
+            Score = 0;
+
             for ( int i = 0; i < 20; i++)
             {
-                 Problem P = new Problem();
-                P.CreateAdditionProblem(2, 0, 10);
-                Questions.Add(P);
-
+                Problem problem = new Problem();
+                problem.CreateDivisionProblem(2, 10, 50, 1,10);
+                Questions.Add(problem);
             }
         }
-       
-      
+
+        public void DisplayProblem()
+        {
+            foreach(var question in Questions)
+            {
+                var askQuestion = string.Format("{0} {1} {2}",question.Values[0], question.Method, question.Values[1]);
+                Console.WriteLine(askQuestion);
+
+                var answer = Console.ReadLine();
+
+                try
+                {
+                    int numericAnswer = int.Parse(answer);
+                    question.Answer(numericAnswer);
+
+                    if (question.Result)
+                    {
+                        Console.WriteLine("Good Job!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Maybe next time...");
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid answer");
+                }
+              
+
+                
 
 
-        
+            }
+            
         }
+
+    }
     
 }
 
