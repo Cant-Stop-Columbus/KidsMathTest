@@ -3,42 +3,42 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluencyMathLib", "FluencyMathLib\FluencyMathLib.csproj", "{623422C9-6FFC-4A56-968E-E43DC383829E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluencyMath", "FluencyMath\FluencyMath.csproj", "{FC71C185-AB59-4DA3-B3E3-DA1992859E62}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluencyMathTests", "FluencyMathTests\FluencyMathTests.csproj", "{C1906B9B-8817-4F0B-BCFE-6C1EB8CA48B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluencyMathConsole", "FluencyMathConsole\FluencyMathConsole.csproj", "{9F1442BF-A52D-4B2B-9567-5D7110637277}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluencyMath", "FluencyMath\FluencyMath.csproj", "{A2B68903-4E16-459C-B829-E0FBA824961E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluencyMathLib", "FluencyMathLib\FluencyMathLib.csproj", "{5E3B3ECB-7543-4F6E-A66D-695BF1EE0722}"
 EndProject
-<<<<<<< HEAD
-=======
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluencyMathConsole", "FluencyMathConsole\FluencyMathConsole.csproj", "{FF281CBD-BDA8-4375-9957-9BE9ECCEFBD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluencyMathService", "FluencyMathService\FluencyMathService.csproj", "{52073EBE-D219-4B3B-BB6D-69C3A475524F}"
 EndProject
->>>>>>> KidsMathTest/master
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluencyMathTests", "FluencyMathTests\FluencyMathTests.csproj", "{AAF7A01B-569A-4FB9-A810-EE0C524CB12C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{623422C9-6FFC-4A56-968E-E43DC383829E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{623422C9-6FFC-4A56-968E-E43DC383829E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{623422C9-6FFC-4A56-968E-E43DC383829E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{623422C9-6FFC-4A56-968E-E43DC383829E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1906B9B-8817-4F0B-BCFE-6C1EB8CA48B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1906B9B-8817-4F0B-BCFE-6C1EB8CA48B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1906B9B-8817-4F0B-BCFE-6C1EB8CA48B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1906B9B-8817-4F0B-BCFE-6C1EB8CA48B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2B68903-4E16-459C-B829-E0FBA824961E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2B68903-4E16-459C-B829-E0FBA824961E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2B68903-4E16-459C-B829-E0FBA824961E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2B68903-4E16-459C-B829-E0FBA824961E}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
-=======
-		{FF281CBD-BDA8-4375-9957-9BE9ECCEFBD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF281CBD-BDA8-4375-9957-9BE9ECCEFBD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF281CBD-BDA8-4375-9957-9BE9ECCEFBD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF281CBD-BDA8-4375-9957-9BE9ECCEFBD0}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> KidsMathTest/master
+		{FC71C185-AB59-4DA3-B3E3-DA1992859E62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC71C185-AB59-4DA3-B3E3-DA1992859E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC71C185-AB59-4DA3-B3E3-DA1992859E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC71C185-AB59-4DA3-B3E3-DA1992859E62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F1442BF-A52D-4B2B-9567-5D7110637277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F1442BF-A52D-4B2B-9567-5D7110637277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F1442BF-A52D-4B2B-9567-5D7110637277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F1442BF-A52D-4B2B-9567-5D7110637277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E3B3ECB-7543-4F6E-A66D-695BF1EE0722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E3B3ECB-7543-4F6E-A66D-695BF1EE0722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3B3ECB-7543-4F6E-A66D-695BF1EE0722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E3B3ECB-7543-4F6E-A66D-695BF1EE0722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52073EBE-D219-4B3B-BB6D-69C3A475524F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52073EBE-D219-4B3B-BB6D-69C3A475524F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52073EBE-D219-4B3B-BB6D-69C3A475524F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52073EBE-D219-4B3B-BB6D-69C3A475524F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAF7A01B-569A-4FB9-A810-EE0C524CB12C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF7A01B-569A-4FB9-A810-EE0C524CB12C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF7A01B-569A-4FB9-A810-EE0C524CB12C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF7A01B-569A-4FB9-A810-EE0C524CB12C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
