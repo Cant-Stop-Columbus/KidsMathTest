@@ -7,7 +7,7 @@ namespace FluencyMathConsole
     {
         static void Main(string[] args)
         {
-            var fluencyAssessment = new FluencyAssesment();
+            var fluencyAssessment = new FluencyAssesment_old();
 
             fluencyAssessment.CreateFluencyAssessment();
 
