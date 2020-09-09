@@ -28,7 +28,8 @@ namespace FluencyMath
             services.AddControllers()
                 .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true);
 
-
+            services.AddCors(); // Make sure you call this previous to AddMvc
+                
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +39,11 @@ namespace FluencyMath
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
@@ -49,6 +55,8 @@ namespace FluencyMath
             {
                 endpoints.MapControllers();
             });
+
+
         }
     }
 }
