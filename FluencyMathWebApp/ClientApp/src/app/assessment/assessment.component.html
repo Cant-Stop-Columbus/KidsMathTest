@@ -6,47 +6,54 @@
 
 <div class="assessment-window">
   <div *ngIf="currentProblem">
-
-
-
-    <div *ngFor="let value of currentProblem.values">
-      <span class="problemValue">{{ value }}</span>
+    <div class="problemContainer">
+      <table class="problem">
+        <tr>
+          <td class="problemMethod">{{ currentProblem.method }}</td>
+          <td>
+            <table>
+              <tr *ngFor="let value of currentProblem.values">
+                <td class="problemValue">{{ value }}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <table class="problemResult">
+        <tr>
+          <td><input type="text" name="answer" /></td>
+        </tr>
+      </table>
     </div>
-    <span class="problemMethod">{{ currentProblem.method }}</span>
-    <!--<span >{{ currentProblem.method }}</span>
-  <span>{{ currentProblem.values }}</span>-->
-    <!--<span>{{ currentProblem.solution }}</span>
-  <span>{{ currentProblem.remainder }}</span>-->
-    <!--<span>{{ currentProblem.result }}</span>-->
-
+    <div class="keypadContainer">
+      <div data-ng-keypad="numeric" data-auto-close="true" data- data-ng-draggable class="numpad">
+        <div class="button-wrapper">
+          <button data-ng-key="1">1</button>
+          <button data-ng-key="1">2</button>
+          <button data-ng-key="1">3</button>
+        </div>
+        <div class="button-wrapper">
+          <button data-ng-key="4">4</button>
+          <button data-ng-key="5">5</button>
+          <button data-ng-key="6">6</button>
+        </div>
+        <div class="button-wrapper">
+          <button data-ng-key="7">7</button>
+          <button data-ng-key="8">8</button>
+          <button data-ng-key="9">9</button>
+        </div>
+        <div class="button-wrapper">
+          <button data-ng-key="[CLEAR]" class="smaller">Clear</button>
+          <button data-ng-key="0">0</button>
+          <button data-ng-key=".">.</button>
+        </div>
+        <div class="button-wrapper">
+          <button data-ng-key="[PREVIOUS]" class="button-wide smaller">Previous</button>
+          <button data-ng-key="[NEXT]" class="button-wide smaller">Next</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<div class="assessment-window">
-  <div data-ng-keypad="numeric" data-auto-close="true" data- data-ng-draggable class="numpad">
-    <div class="button-wrapper">
-      <button data-ng-key="1">1</button>
-      <button data-ng-key="1">2</button>
-      <button data-ng-key="1">3</button>
-    </div>
-    <div class="button-wrapper">
-      <button data-ng-key="4">4</button>
-      <button data-ng-key="5">5</button>
-      <button data-ng-key="6">6</button>
-    </div>
-    <div class="button-wrapper">
-      <button data-ng-key="7">7</button>
-      <button data-ng-key="8">8</button>
-      <button data-ng-key="9">9</button>
-    </div>
-    <div class="button-wrapper">
-      <button data-ng-key="[CLEAR]" class="smaller">Clear</button>
-      <button data-ng-key="0">0</button>
-      <button data-ng-key=".">.</button>
-    </div>
-
-    <button data-ng-key="[PREVIOUS]" class="button-wide smaller">Previous</button>
-    <button data-ng-key="[NEXT]" class="button-wide smaller">Next</button>
-  </div>
 
   <button class="btn btn-primary" (click)="loadProblem()">Next --></button>

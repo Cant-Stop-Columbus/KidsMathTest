@@ -68,24 +68,12 @@ hr {
 
 
 .numpad {
-  height: 300px;
+  height: 340px;
   width: 215px;
-  padding: 13px;
+  padding: 15px;
   z-index: 10000;
-  background: #666;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  background: #000;
   border-radius: 10px;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #999999), color-stop(100%, #666666));
-  background-image: -webkit-linear-gradient(#999999, #666666);
-  background-image: -moz-linear-gradient(#999999, #666666);
-  background-image: -o-linear-gradient(#999999, #666666);
-  background-image: linear-gradient(#999999, #666666);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 0 25px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 0 25px;
-  box-shadow: rgba(0, 0, 0, 0.4) 0 0 25px;
 }
 
   .numpad[disabled] button {
@@ -98,28 +86,16 @@ hr {
   }
 
     .numpad .button-wrapper button {
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      -ms-border-radius: 5px;
-      -o-border-radius: 5px;
       border-radius: 5px;
-      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e5e5e5));
-      background-image: -webkit-linear-gradient(#ffffff, #e5e5e5);
-      background-image: -moz-linear-gradient(#ffffff, #e5e5e5);
-      background-image: -o-linear-gradient(#ffffff, #e5e5e5);
-      background-image: linear-gradient(#ffffff, #e5e5e5);
-      -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 10px;
-      -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 10px;
-      box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 10px;
-      box-sizing: border-box;
       display: block;
       float: left;
-      width: 51px;
-      height: 51px;
-      padding: 10px 0px;
-      margin: 0 10px 10px 0;
+      width: 55px;
+      height: 55px;
+      padding: 8px 0px;
+      margin: 0px 10px 10px 0;
       border: none;
-      font-size: 20px;
+      font-size: 26px;
+      background: #fff;
     }
 
     .numpad .button-wrapper .smaller {
@@ -128,7 +104,9 @@ hr {
 
     .numpad .button-wrapper .button-wide {
       width: 82px;
+      margin: 0 3px 0 7px;
     }
+
 
     .numpad .button-wrapper .pressed {
       background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dadada), color-stop(100%, #bebebe));
@@ -191,25 +169,65 @@ hr {
       font-size: 16px;
     }
 
+    .container{
+        border: solid 1px orange;
+    }
 
 .assessment-window {
-  width: 250px;
-  height: 350px;
-  float: left;
-  margin: 15px;
-  padding: 5px;
+  width: 700px;
+  height: 600px;
+  display: inline-block;
+  margin: 0 15px 0px 15px;
+  padding: 15px;
+  text-align: right;
 }
 
+.problem {
+  width: 100%;
+}
+
+.problemContainer {
+  padding: 5px;
+  float: left;
+  width: 320px;
+  display: inline-block;
+  text-align: center;
+  height: 430px;
+}
+
+.problemMethod {
+  font-family: impact;
+  font-size: 80px;
+  margin-top: 0px;
+  vertical-align: top;
+  padding-top: 55px;
+}
+
+.problemResult {
+  width: 100%;
+}
+
+  .problemResult input {
+    font-size: 55px;
+    width: 220px;
+    text-align: center;
+  }
+
+.keypadContainer {
+  padding: 5px;
+  float: left;
+  width: 320px;
+  display: inline-block;
+  text-align: center;
+  height: 430px;
+}
 
 .problemValue {
   font-family: impact;
-  font-size: 90px;
+  font-size: 100px;
 }
 
 .problemMethod {
   font-family: impact;
   font-size: 90px;
-  margin-top: -201px;
-  float: left;
-  margin-left: -44px
 }
