@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -9,7 +10,14 @@ export class AssessmentComponent {
 
   public assessment: Problem[];
   public currentProblem: Problem;
+  public startScreen: boolean;
+  public endScreen: boolean;
   public problemIndex = 0;
+
+ assessmentForm = new FormGroup({
+   answer: new FormControl('')
+  });
+
 
   public nextProblem() {
     this.problemIndex++;
@@ -22,17 +30,45 @@ export class AssessmentComponent {
 
     //2 checks, do we have more then 0 problems?
     //are we on the last problem?
-    //if (this.assessment.length >= 0 && cu)
+    if (this.assessment.length >= 0 && this.problemIndex <= this.assessment.length - 1) {
+      
+    }
 
     let problem = this.assessment[this.problemIndex];
     this.currentProblem = problem;
+
+    this.limitAnswerScope();
 
     this.nextProblem();
 
   }
 
+  public limitAnswerScope() {
+
+    var values = this.currentProblem.values;
+    var maxLength = 0;
+
+    values.forEach(this.getDigitCount);
+
+  }
+
+  public getDigitCount(value) {
+    var stringValue = String(value)
+    console.log(stringValue.length);
+  }
+
+  public keypadPress(keyValue) {
+
+    var currentValue = this.assessmentForm.get('answer').value
+    this.assessmentForm.get('answer').setValue(currentValue + keyValue);
+
+  }
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+
+    this.startScreen = true;
+    this.endScreen = false;
+
     let headerConfig = new HttpHeaders()
       .set('Content-Type', 'text/json')
       .set('Access-Control-Allow-Origin', '*')
@@ -43,9 +79,6 @@ export class AssessmentComponent {
       this.assessment = result;
       console.log("did this work", result);
     }, error => console.error(error));
-
-
-
 
   }
 }

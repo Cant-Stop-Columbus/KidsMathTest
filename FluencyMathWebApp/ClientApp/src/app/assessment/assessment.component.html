@@ -5,6 +5,9 @@
 <p *ngIf="!currentProblem"><em>Loading...</em></p>
 
 <div class="assessment-window">
+  <div *ngIf="startScreen">
+
+  </div>
   <div *ngIf="currentProblem">
     <div class="problemContainer">
       <table class="problem">
@@ -19,41 +22,46 @@
           </td>
         </tr>
       </table>
-      <table class="problemResult">
-        <tr>
-          <td><input type="text" name="answer" /></td>
-        </tr>
-      </table>
+      <form class="container" [formGroup]="assessmentForm">
+        <table class="problemResult">
+          <tr>
+            <td><input type="text" formControlName="answer" /></td>
+          </tr>
+        </table>
+      </form>
     </div>
     <div class="keypadContainer">
-      <div data-ng-keypad="numeric" data-auto-close="true" data- data-ng-draggable class="numpad">
+      <div class="numpad">
         <div class="button-wrapper">
-          <button data-ng-key="1">1</button>
-          <button data-ng-key="1">2</button>
-          <button data-ng-key="1">3</button>
+          <button (click)="keypadPress(1)">1</button>
+          <button (click)="keypadPress(2)">2</button>
+          <button (click)="keypadPress(3)">3</button>
         </div>
         <div class="button-wrapper">
-          <button data-ng-key="4">4</button>
-          <button data-ng-key="5">5</button>
-          <button data-ng-key="6">6</button>
+          <button (click)="keypadPress(4)">4</button>
+          <button (click)="keypadPress(5)">5</button>
+          <button (click)="keypadPress(6)">6</button>
         </div>
         <div class="button-wrapper">
-          <button data-ng-key="7">7</button>
-          <button data-ng-key="8">8</button>
-          <button data-ng-key="9">9</button>
+          <button (click)="keypadPress(7)">7</button>
+          <button (click)="keypadPress(8)">8</button>
+          <button (click)="keypadPress(9)">9</button>
         </div>
         <div class="button-wrapper">
-          <button data-ng-key="[CLEAR]" class="smaller">Clear</button>
-          <button data-ng-key="0">0</button>
-          <button data-ng-key=".">.</button>
+          <button (click)="keypadPress('clear')" class="smaller">Clear</button>
+          <button (click)="keypadPress(0)">0</button>
+          <button (click)="keypadPress('.')">.</button>
         </div>
         <div class="button-wrapper">
-          <button data-ng-key="[PREVIOUS]" class="button-wide smaller">Previous</button>
-          <button data-ng-key="[NEXT]" class="button-wide smaller">Next</button>
+          <button (click)="keypadPress('previous')" class="button-wide smaller">Previous</button>
+          <button (click)="keypadPress('next')" class="button-wide smaller">Next</button>
         </div>
       </div>
     </div>
+    <div *ngIf="endScreen">
+
+    </div>
   </div>
-</div>
+  </div>
 
   <button class="btn btn-primary" (click)="loadProblem()">Next --></button>
