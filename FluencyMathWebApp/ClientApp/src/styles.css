@@ -234,3 +234,25 @@ hr {
   font-family: impact;
   font-size: 90px;
 }
+
+.nextButton {
+  font-size: 42px;
+  border: solid 1px black;
+  color: black;
+}
+
+.goButton {
+  font-size: 42px;
+  border: solid 1px #000;
+  border-radius: 10px;
+  background: limegreen;
+  color: #fff;
+}
+
+.startScreen {
+  font-weight: bold;
+  font-size: 22px;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 50px;
+}

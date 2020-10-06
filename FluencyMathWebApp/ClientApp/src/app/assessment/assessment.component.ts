@@ -13,6 +13,7 @@ export class AssessmentComponent {
   public startScreen: boolean;
   public endScreen: boolean;
   public problemIndex = 0;
+  public countdown = '';
 
  assessmentForm = new FormGroup({
    answer: new FormControl('')
@@ -25,6 +26,7 @@ export class AssessmentComponent {
 
   public loadProblem() {
 
+    this.clear();
     console.log(this.problemIndex);
     console.log(this.currentProblem);
 
@@ -47,8 +49,27 @@ export class AssessmentComponent {
 
     var values = this.currentProblem.values;
     var maxLength = 0;
-
     values.forEach(this.getDigitCount);
+  }
+
+  public displayCountdown(displayValue, my) {
+    my.countdown = String(displayValue);
+
+    if (displayValue == '')
+      my.loadProblem();
+  }
+
+  public startAssessment() {
+
+    this.countdown = 'Ready!';
+    setTimeout(this.displayCountdown, 2000, '3', this);
+    setTimeout(this.displayCountdown, 3000, '2', this);
+    setTimeout(this.displayCountdown, 4000, '1', this);
+    setTimeout(this.displayCountdown, 5000, '', this);
+  }
+
+  public clear() {
+    this.assessmentForm.get('answer').setValue('');
 
   }
 

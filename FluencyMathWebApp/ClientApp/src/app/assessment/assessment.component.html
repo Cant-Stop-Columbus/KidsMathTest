@@ -1,67 +1,78 @@
 <h1 id="tableLabel">Assessment Test</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<div class="assessment-window" *ngIf="!currentProblem">
 
-<p *ngIf="!currentProblem"><em>Loading...</em></p>
-
-<div class="assessment-window">
-  <div *ngIf="startScreen">
-
+    <div class="startScreen">
+      <span>When you are ready to take your assessment press go!</span>
+    </div>
+    <div class="startScreen">
+        <button class="btn goButton" (click)="startAssessment()">Go</button>
+    </div>
+    <div class="startScreen">
+      <span>{{ countdown }}</span>
+    </div>
   </div>
-  <div *ngIf="currentProblem">
-    <div class="problemContainer">
-      <table class="problem">
-        <tr>
-          <td class="problemMethod">{{ currentProblem.method }}</td>
-          <td>
-            <table>
-              <tr *ngFor="let value of currentProblem.values">
-                <td class="problemValue">{{ value }}</td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-      <form class="container" [formGroup]="assessmentForm">
-        <table class="problemResult">
+
+  <div class="assessment-window">
+    <div *ngIf="startScreen ">
+
+    </div>
+    <div *ngIf="currentProblem">
+      <div class="problemContainer">
+        <table class="problem">
           <tr>
-            <td><input type="text" formControlName="answer" /></td>
+            <td class="problemMethod">{{ currentProblem.method }}</td>
+            <td>
+              <table>
+                <tr *ngFor="let value of currentProblem.values">
+                  <td class="problemValue">{{ value }}</td>
+                </tr>
+              </table>
+            </td>
           </tr>
         </table>
-      </form>
-    </div>
-    <div class="keypadContainer">
-      <div class="numpad">
-        <div class="button-wrapper">
-          <button (click)="keypadPress(1)">1</button>
-          <button (click)="keypadPress(2)">2</button>
-          <button (click)="keypadPress(3)">3</button>
+        <form class="container" [formGroup]="assessmentForm">
+          <table class="problemResult">
+            <tr>
+              <td><input type="text" formControlName="answer" /></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <div class="keypadContainer">
+        <div class="numpad">
+          <div class="button-wrapper">
+            <button (click)="keypadPress(1)">1</button>
+            <button (click)="keypadPress(2)">2</button>
+            <button (click)="keypadPress(3)">3</button>
+          </div>
+          <div class="button-wrapper">
+            <button (click)="keypadPress(4)">4</button>
+            <button (click)="keypadPress(5)">5</button>
+            <button (click)="keypadPress(6)">6</button>
+          </div>
+          <div class="button-wrapper">
+            <button (click)="keypadPress(7)">7</button>
+            <button (click)="keypadPress(8)">8</button>
+            <button (click)="keypadPress(9)">9</button>
+          </div>
+          <div class="button-wrapper">
+            <button (click)="clear()" class="smaller">Clear</button>
+            <button (click)="keypadPress(0)">0</button>
+            <button (click)="keypadPress('.')">.</button>
+          </div>
         </div>
-        <div class="button-wrapper">
-          <button (click)="keypadPress(4)">4</button>
-          <button (click)="keypadPress(5)">5</button>
-          <button (click)="keypadPress(6)">6</button>
-        </div>
-        <div class="button-wrapper">
-          <button (click)="keypadPress(7)">7</button>
-          <button (click)="keypadPress(8)">8</button>
-          <button (click)="keypadPress(9)">9</button>
-        </div>
-        <div class="button-wrapper">
-          <button (click)="keypadPress('clear')" class="smaller">Clear</button>
-          <button (click)="keypadPress(0)">0</button>
-          <button (click)="keypadPress('.')">.</button>
-        </div>
-        <div class="button-wrapper">
-          <button (click)="keypadPress('previous')" class="button-wide smaller">Previous</button>
-          <button (click)="keypadPress('next')" class="button-wide smaller">Next</button>
-        </div>
+
+        <button class="btn nextButton" (click)="loadProblem()"><i class="fas fa-share"></i></button>
+
+      </div>
+
+
+
+      <div *ngIf="endScreen">
+
       </div>
     </div>
-    <div *ngIf="endScreen">
-
-    </div>
-  </div>
   </div>
 
-  <button class="btn btn-primary" (click)="loadProblem()">Next --></button>
+
