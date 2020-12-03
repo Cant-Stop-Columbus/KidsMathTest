@@ -8,8 +8,18 @@ export function getBaseUrl() {
   return document.getElementsByTagName('base')[0].href;
 }
 
+export function getAPIBaseUrl() {
+  return 'https://localhost:44327/api/';
+}
+
+export function getEmptyId() {
+  return '00000000-0000-0000-0000-000000000000';
+}
+
 const providers = [
-  { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] }
+  { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] },
+  { provide: 'API_BASE_URL', useFactory: getAPIBaseUrl, deps: [] },
+  { provide: 'EMPTY_ID', useFactory: getEmptyId, deps: [] }
 ];
 
 if (environment.production) {

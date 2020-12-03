@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Timers;
 
-namespace FluencyMathLib
+namespace FluencyMath.Lib
 {
 
-    public class FluencyAssesment : Problem
+    public class FluencyAssesment_old : Problem
     {
         public List<Problem> Questions { get; set; }
         public int Score { get; private set; }
@@ -52,10 +52,6 @@ namespace FluencyMathLib
                     Console.WriteLine("Invalid answer");
                 }
               
-
-                
-
-
             }
             
         }

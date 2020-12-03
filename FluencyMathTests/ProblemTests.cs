@@ -1,4 +1,4 @@
-using FluencyMathLib;
+using FluencyMath.Lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 

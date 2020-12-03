@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AssessmentsService } from '../core/services/assessments.service';
 
 @Component({
   selector: 'app-assessment',
@@ -36,8 +36,12 @@ export class AssessmentComponent {
       
     }
 
+    let saved = this.saveAssessment();
+
     let problem = this.assessment[this.problemIndex];
     this.currentProblem = problem;
+
+
 
     this.limitAnswerScope();
 
@@ -85,22 +89,21 @@ export class AssessmentComponent {
 
   }
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  bindAssessment(assessment) {
+    this.assessment = assessment;
+  }
+
+  constructor(private assessmentsService: AssessmentsService) {
 
     this.startScreen = true;
     this.endScreen = false;
+    this.assessmentsService.get().subscribe(assessment => this.bindAssessment(assessment));
 
-    let headerConfig = new HttpHeaders()
-      .set('Content-Type', 'text/json')
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', '*')
-      .set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  }
 
-    http.get<Problem[]>('https://localhost:44327/api/test', { headers: headerConfig }).subscribe(result => {
-      this.assessment = result;
-      console.log("did this work", result);
-    }, error => console.error(error));
-
+  saveAssessment() {
+    console.log("saving assessment", this.assessment);
+    this.assessmentsService.save(this.assessment).subscribe(() => "", _ => "");
   }
 }
 

@@ -1,34 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
-namespace FluencyMathService
+namespace FluencyMath.Lib
 {
-    public class AssessmentService
+    public class Problem
     {
 
-        public List<FluencyMathLib.ProblemModel> Fetch(int numProblems)
+        public List<int> Values { get; set; }
+        public string Method { get; set; }
+
+        public int Solution { get; private set; }
+        public bool Result { get; private set; }
+
+        public int Remainder { get; private set; }
+
+        public Problem()
         {
-            return CreateFluencyAssessment(numProblems);
+            Result = false;
         }
 
-        private List<FluencyMathLib.ProblemModel> CreateFluencyAssessment(int numProblems)
-        {
-            var assessmentProblems = new List<FluencyMathLib.ProblemModel>();
-
-            for (int i = 0; i < numProblems; i++)
-            {
-                var assessmentProblem = CreateAdditionProblem(2, 0, 100);
-                assessmentProblems.Add(assessmentProblem);
-            }
-
-            return assessmentProblems;
-        }
-
-        /*
         public void Create()
         {
-
             if (Values.Count >= 2)
             {
                 if (Method == "+")
@@ -84,78 +76,49 @@ namespace FluencyMathService
             }
 
         }
-        */
-
-        private FluencyMathLib.ProblemModel CreateAdditionProblem(int totalValues, int smallest, int largest)
+        
+        public void CreateAdditionProblem(int totalValues, int smallest, int largest)
         {
-            //Values = list of numbers we are adding together
-
-            var problemModel = new FluencyMathLib.ProblemModel();
-
-            var addends = new List<int>();
+            Values = new List<int>();
 
             for (int i = 0; i < totalValues; i++)
             {
                 var randomInt = generateRandomInt(smallest, largest);
-                addends.Add(randomInt);
+                Values.Add(randomInt);
             }
 
-            problemModel.Values = addends;
-            problemModel.Method = "+";
-
-            var solution = 0;
-
-            foreach (int value in addends)
-            {
-                solution += value;
-            }
-
-            problemModel.Solution = solution;
-
-            return problemModel;
-
+            Method = "+";
+            Create();
         }
 
-        private FluencyMathLib.ProblemModel CreateSubtractionProblem(int totalValues, int smallest, int largest)
+        public void CreateSubtractionProblem(int totalValues, int smallest, int largest)
         {
-            var problemModel = new FluencyMathLib.ProblemModel();
+            Values = new List<int>();
 
-            var toBeStubtracted = new List<int>();
+
 
             for (int i = 0; i < totalValues; i++)
             {
                 var randomInt = generateRandomInt(smallest, largest);
-                toBeStubtracted.Add(randomInt);
+                Values.Add(randomInt);
             }
 
-            if (toBeStubtracted.Count == 2 && toBeStubtracted[1] > toBeStubtracted[0])
+            if (Values.Count == 2 && Values[1] > Values[0])
             {
                 // This is a jenky way to solve the problem of a random subtraction problem with a
                 // first number that's less than the second (thus producing a negative number). A more
                 // complete solution will have to be fleshed out when we make problems with more than 2 numbers.
 
-                int larger = toBeStubtracted[1];
-                toBeStubtracted[1] = toBeStubtracted[0];
-                toBeStubtracted[0] = larger;
+                int larger = Values[1];
+                Values[1] = Values[0];
+                Values[0] = larger;
             }
 
-            problemModel.Values = toBeStubtracted;
-            problemModel.Method = "-";
-
-            var solution = toBeStubtracted[0];
-
-            for (int i = 1; i < toBeStubtracted.Count; i++)
-            {
-                solution = solution - toBeStubtracted[i];
-            }
-
-            problemModel.Solution = solution;
-
-            return problemModel;
-
+            Method = "-";
+            Create();
         }
 
-        /*private void CreateMultiplicationProblem(int totalValues, int smallest, int largest)
+        public void CreateMultiplicationProblem(int totalValues, int smallest, int largest)
         {
             Values = new List<int>();
 
@@ -169,7 +132,7 @@ namespace FluencyMathService
             Create();
         }
 
-        private void CreateDivisionProblem(int smallest, int largest, bool remainders = false)
+        public void CreateDivisionProblem(int smallest, int largest, bool remainders = false)
         {
             // Going to go out on a limb and say division problems with 3 values won't be an issue we have to face.
 
@@ -183,7 +146,7 @@ namespace FluencyMathService
             if (remainders)
             {
                 int divisor = generateRandomInt(smallest, largest);
-                int dividend = (divisor * generateRandomInt(smallest, largest)) + generateRandomInt(0, divisor);
+                int dividend =( divisor * generateRandomInt(smallest, largest)) + generateRandomInt(0, divisor);
 
                 Values.Add(dividend);
                 Values.Add(divisor);
@@ -201,7 +164,92 @@ namespace FluencyMathService
             Method = "/";
             Create();
         }
-        */
+
+        public void CreateTest01Problem()
+        {
+            CreateAdditionProblem(2, 0, 11);
+        }
+
+        public void CreateTest02Problem()
+        {
+            CreateSubtractionProblem(2, 0, 21);
+        }
+
+        public void CreateTest03Problem()
+        {
+            CreateAdditionProblem(2, 0, 100);
+            while (doesAdditionProblemCarry(Values))
+            {
+                CreateAdditionProblem(2, 0, 100);
+            }
+        }
+
+        public void CreateTest04Problem()
+        {
+            CreateAdditionProblem(2, 0, 100);
+        }
+
+        public void CreateTest05Problem()
+        {
+            CreateSubtractionProblem(2, 0, 100);
+            while (doesSubtractionProblemBorrow(Values))
+            {
+                CreateSubtractionProblem(2, 0, 100);
+            }
+        }
+
+        public void Create06Problem()
+        {
+            CreateSubtractionProblem(2, 0, 100);
+        }
+
+        public void Create07Problem()
+        {
+            CreateAdditionProblem(2, 0, 1000);
+            while (doesAdditionProblemCarry(Values))
+            {
+                CreateAdditionProblem(2, 0, 1000);
+            }
+        }
+
+        public void Create08Problem()
+        {
+            CreateAdditionProblem(2, 0, 1000);
+        }
+
+        public void Create09Problem()
+        {
+            CreateSubtractionProblem(2, 0, 1000);
+            while (doesSubtractionProblemBorrow(Values))
+            {
+                CreateSubtractionProblem(2, 0, 1000);
+            }
+        }
+
+        public void Create10Problem()
+        {
+            CreateSubtractionProblem(2, 0, 1000);
+        }
+
+        public void Create11Problem()
+        {
+            CreateMultiplicationProblem(2, 0, 10);
+        }
+
+        public void Create12Problem()
+        {
+            CreateDivisionProblem(1, 10);
+        }
+
+        public void Create13Problem()
+        {
+            CreateMultiplicationProblem(2, 0, 12);
+        }
+
+        public void Create14Problem()
+        {
+            CreateDivisionProblem(1, 13);
+        }
 
         private int generateRandomInt(int min, int max)
         {
@@ -214,7 +262,7 @@ namespace FluencyMathService
             // Creates (reverse-ordered) list of integers where each integer is digit in input num
 
             var digits = new List<int>();
-            while (num != 0)
+            while(num != 0)
             {
                 int nextDigit = num % 10;
                 num /= 10;
@@ -230,7 +278,7 @@ namespace FluencyMathService
             var digitsOfNum1 = generateDigits(numsAdded[0]);
             var digitsOfNum2 = generateDigits(numsAdded[1]);
 
-            for (int i = 0; i < Math.Min(digitsOfNum1.Count, digitsOfNum2.Count); i++)
+            for(int i = 0; i < Math.Min(digitsOfNum1.Count, digitsOfNum2.Count); i++)
             {
                 if (digitsOfNum1[i] + digitsOfNum2[i] > 9)
                 {
@@ -245,7 +293,7 @@ namespace FluencyMathService
             var digitsOfNum1 = generateDigits(numsSubtracted[0]);
             var digitsOfNum2 = generateDigits(numsSubtracted[1]);
 
-            for (int i = 0; i < Math.Min(digitsOfNum1.Count, digitsOfNum2.Count); i++)
+            for(int i = 0; i < Math.Min(digitsOfNum1.Count, digitsOfNum2.Count); i++)
             {
                 if (digitsOfNum1[i] < digitsOfNum2[i])
                 {
@@ -255,8 +303,7 @@ namespace FluencyMathService
             return false;
         }
 
-        /*
-         * public void Answer(int inputAnswer)
+        public void Answer(int inputAnswer)
         {
             if (Solution >= 0)
             {
@@ -272,8 +319,5 @@ namespace FluencyMathService
                 throw new Exception("A solution has not been created");
             }
         }
-        */
-        
-
     }
 }

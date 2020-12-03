@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FluencyMath.Controllers
+namespace FluencyMath.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestController : ControllerBase
+    public class AssessmentTypeController : ControllerBase
     {
 
         [HttpGet]
         public IActionResult Get()
         {
-            var assessmentService = new FluencyMathService.AssessmentService();
+            var assessmentTypeService = new Services.AssessmentTypeService();
 
-            var result = assessmentService.Fetch(20);
+            var result = assessmentTypeService.Fetch();
 
             return Ok(result);
 

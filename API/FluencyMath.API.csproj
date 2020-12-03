@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FluencyMathService\FluencyMathService.csproj" />
+    <ProjectReference Include="..\Lib\FluencyMath.Lib.csproj" />
+    <ProjectReference Include="..\Services\FluencyMath.Services.csproj" />
   </ItemGroup>
 
 

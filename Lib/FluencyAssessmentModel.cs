@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FluencyMathLib
+namespace FluencyMath.Lib
 {
     public class FluencyAssessmentModel
     {
